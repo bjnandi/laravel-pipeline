@@ -5,13 +5,13 @@ phases:
          php: 7.4
          nodejs: 12.x
      commands:
-	 - sudo su
          - apt-get update -y
          - apt-get install -y libpq-dev libzip-dev
          - apt-get install -y php-pgsql
          - curl -sS <https://getcomposer.org/installer> | php -- --install-dir=/usr/local/bin --filename=composer
    pre_build:
      commands:
+	 - cp .env.staging .env
          - composer install
          - npm install
    build:
